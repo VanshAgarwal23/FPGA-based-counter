@@ -1,6 +1,6 @@
 module hex_to_7seg(
     input [3:0] bin_in,
-    output reg [6:0] seg_out // ordered A to G
+    output reg [6:0] seg_out // ordered {g, f, e, d, c, b, a}
 );
     always @(*) begin
         case(bin_in)
