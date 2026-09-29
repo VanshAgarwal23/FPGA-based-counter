@@ -1,10 +1,10 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
-| Date         : Tue Sep 22 15:44:05 2026
+| Date         : Tue Sep 29 17:42:12 2026
 | Host         : HP_PAVILLION running 64-bit major release  (build 9200)
 | Command      : report_utilization -file C:/Users/Test/Vivado_projects/FPGA-Based_Counter_System/Reports/utilization.txt
-| Design       : up_down_counter
+| Design       : top_module
 | Device       : xc7a35tcpg236-1
 | Speed File   : -1
 | Design State : Synthesized
@@ -31,15 +31,15 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |    2 |     0 |          0 |     20800 | <0.01 |
-|   LUT as Logic          |    2 |     0 |          0 |     20800 | <0.01 |
+| Slice LUTs*             |   13 |     0 |          0 |     20800 |  0.06 |
+|   LUT as Logic          |   13 |     0 |          0 |     20800 |  0.06 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |    4 |     0 |          0 |     41600 | <0.01 |
-|   Register as Flip Flop |    4 |     0 |          0 |     41600 | <0.01 |
+| Slice Registers         |   25 |     0 |          0 |     41600 |  0.06 |
+|   Register as Flip Flop |   25 |     0 |          0 |     41600 |  0.06 |
 |   Register as Latch     |    0 |     0 |          0 |     41600 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
-| Unique Control Sets     |    1 |       |          0 |      8150 |  0.01 |
+| Unique Control Sets     |    3 |       |          0 |      8150 |  0.04 |
 +-------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
@@ -62,7 +62,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 4     |          Yes |       Reset |            - |
+| 25    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -95,7 +95,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |    8 |     0 |          0 |       106 |  7.55 |
+| Bonded IOB                  |   15 |     0 |          0 |       106 | 14.15 |
 | Bonded IPADs                |    0 |     0 |          0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
@@ -154,13 +154,15 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |    4 |                  IO |
+| FDRE     |   25 |        Flop & Latch |
+| OBUF     |   11 |                  IO |
+| LUT5     |    9 |                 LUT |
+| CARRY4   |    5 |          CarryLogic |
+| LUT6     |    4 |                 LUT |
 | IBUF     |    4 |                  IO |
-| FDRE     |    4 |        Flop & Latch |
-| LUT5     |    1 |                 LUT |
+| LUT1     |    3 |                 LUT |
 | LUT4     |    1 |                 LUT |
 | LUT3     |    1 |                 LUT |
-| LUT1     |    1 |                 LUT |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 
